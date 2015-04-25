@@ -15,7 +15,7 @@ ADD http://downloads.sourceforge.net/project/nzbget/nzbget-stable/$VERSION/nzbge
 RUN tar xf /tmp/nzbget.tar.gz
 # Configure and install NZBGET
 RUN cd /nzbget-$VERSION && \
-    ./configure && \
+    ./configure --with-tlslib=OpenSSL && \
     make && \
     make install
 # Remove install files
