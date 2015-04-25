@@ -1,0 +1,55 @@
+www:
+  image: nginx
+  ports:
+    - "80:80"
+
+data:
+  image: ubuntu:14.04
+  volumes:
+    - ./media:/media
+
+plex:
+  build: ./docker/plex
+  ports:
+    - "32400:32400"
+    - "1900:1900/udp"
+    - "3005:3005"
+    - "5353:5353/udp"
+    - "8324:8324"
+    - "32469:32469"
+    - "32410:32410/udp"
+    - "32412:32412/udp"
+    - "32413:32413/udp"
+    - "32414:32414/udp"
+  volumes:
+    - ./config/plex:/config
+  volumes_from:
+    - data
+  net: "host"
+
+sonarr:
+  build: ./docker/sonarr
+  ports:
+    - "8989:8989"
+  volumes_from:
+    - data
+  volumes:
+    - ./config/sonarr:/root/.config
+  net: "host"
+
+nzbget:
+  build: ./docker/nzbget
+  ports:
+    - "6789:6789"
+  volumes:
+    - ./config/nzbget:/config
+  volumes_from:
+    - data
+
+couchpotato:
+  build: ./docker/couchpotato
+  net: "host"
+  volumes:
+    - ./config/couchpotato:/config
+  volumes_from:
+    - data
