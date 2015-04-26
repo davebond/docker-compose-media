@@ -14,5 +14,5 @@ RUN rm /tmp/plex.deb
 EXPOSE 32400
 
 # Set ENV, remove PID and run
-#ENV HOME /config
+ENV HOME /config
 CMD rm -f $HOME/Library/Application\ Support/Plex\ Media\ Server/plexmediaserver.pid && /usr/sbin/start_pms
