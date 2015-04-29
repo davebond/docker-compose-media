@@ -45,6 +45,7 @@ nzbget:
     - ./config/nzbget:/config
   volumes_from:
     - data
+  net: "host"
 
 deluged:
   build: ./docker/deluged
@@ -55,6 +56,7 @@ deluged:
     - ./config/deluge:/root/.config/deluge
   volumes_from:
     - data
+  net: "host"
 
 couchpotato:
   build: ./docker/couchpotato
