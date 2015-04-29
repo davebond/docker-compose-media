@@ -50,8 +50,16 @@ nzbget:
 deluged:
   build: ./docker/deluged
   ports:
-    - "8112:8112"
     - "58846:58846"
+  volumes:
+    - ./config/deluge:/root/.config/deluge
+  volumes_from:
+    - data
+  net: "host"
+delugeweb:
+  build: ./docker/deluge-web
+  ports:
+    - "8112:8112"
   volumes:
     - ./config/deluge:/root/.config/deluge
   volumes_from:
