@@ -57,7 +57,7 @@ deluged:
     - data
   net: "host"
 delugeweb:
-  build: ./docker/deluge-web
+  build: ./docker/deluged-web
   ports:
     - "8112:8112"
   volumes:
