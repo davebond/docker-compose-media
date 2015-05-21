@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get install -y git-core python2.7 unrar
 
 # Clone couchpotato
-RUN git clone -b yify-provider https://github.com/davebond/CouchPotatoServer.git /couchpotato
+RUN git clone https://github.com/davebond/CouchPotatoServer.git /couchpotato
 
 # Add start.sh
 ADD start.sh /start.sh
